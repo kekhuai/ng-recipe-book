@@ -1,23 +1,30 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
-  selector: 'app-recipe-detail',
-  templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+    selector: 'app-recipe-detail',
+    templateUrl: './recipe-detail.component.html',
+    styleUrls: ['./recipe-detail.component.css'],
+    encapsulation: ViewEncapsulation.Emulated
 })
 export class RecipeDetailComponent implements OnInit {
-  @Input() recipe: Recipe;
+    recipe: Recipe;
+    id: number;
+    constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
 
-  constructor(private recipeService: RecipeService) { }
+    ngOnInit() {
+        this.route.params.subscribe(
+            (params: Params) => {
+                this.id = +params['id'];
+                this.recipe = this.recipeService.getRecipe(this.id);
+            }
+        );
+    }
 
-  ngOnInit() {
-  }
-
-  onAddToShoppingList() {
-    this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
-  }
+    onAddToShoppingList() {
+        this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+    }
 
 }

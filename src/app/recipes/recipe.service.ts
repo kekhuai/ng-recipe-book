@@ -22,4 +22,8 @@ export class RecipeService {
       addIngredientsToShoppingList(ingredients: Ingredient[]) {
           this.slService.addIngredients(ingredients);
       }
+
+      getRecipe(index: number): Recipe {
+          return this.recipes.slice[index];
+      }
 }
