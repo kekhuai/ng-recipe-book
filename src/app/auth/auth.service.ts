@@ -1,6 +1,6 @@
-import * as firebase from 'firebase';
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
