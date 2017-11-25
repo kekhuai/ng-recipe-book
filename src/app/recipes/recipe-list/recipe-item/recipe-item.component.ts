@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+
 import { Recipe } from '../../recipe.model';
-import { RecipeService } from '../../recipe.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,13 +9,10 @@ import { RecipeService } from '../../recipe.service';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class RecipeItemComponent implements OnInit {
-
   @Input() recipe: Recipe;
   @Input() index: number;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
