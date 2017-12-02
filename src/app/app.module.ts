@@ -19,7 +19,7 @@ import { reducers } from './store/app.reducers';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'my-universal-app' }),
+    BrowserModule.withServerTransition({ appId: 'my-app' }),
     AppRoutingModule,
     HttpClientModule,
     SharedModule,
